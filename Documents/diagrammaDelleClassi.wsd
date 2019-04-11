@@ -1,0 +1,53 @@
+@startuml SCATOLE CON SABBIA E PALLINA
+
+class contenitore {
+    -int profondita
+    -Sabbia Sabbia
+    -Pallina pallina
+    -leggiInclinazioni inclinazione
+    -flaot inclinazioneX
+    -float inclinazioneY
+
+    +void aggiornaDistribuzioneSabbia()
+    +void aggiornaVelocitaPallina()
+    +void aggiornaPosizionePallina()
+    +void aggiornaInclinazioneX()
+    +void aggiornaInclinazioneY()
+    +void aggiornaInclinazioneXeY()
+    +void visualizzaScatola()
+    +void visualizzaPallina()
+    +void visualizzaSabbia()
+    +void simulazioneMovimento()
+}
+
+class Sabbia{
+    -int altezza
+    -float velocita
+
+    +void incrementaVelocita()
+    +void aggiornaSabbia(int altezza, float velocita)
+}
+
+class Pallina {
+    -float velocita
+    -float massa
+    
+    +void incrementaVelocita()
+    +void aggiornaPallina(float velocita, float massa)
+}
+
+class leggiInclinazioni {
+ -float inclinazioneX
+ -float inclinazioneY
+
+ +float getInclinazioneX()
+ +float getInclinazioneY()
+ +float getInclinazioneX(int coordinataXMano1, int coordinataXMano2)
+ +float getInclinazioneY(int coordinataYMano1, int coordinataYMano2)
+}
+
+Sabbia "1" --o "1" contenitore
+Pallina "1" --o "1" contenitore
+leggiInclinazioni "1" --o "1" contenitore
+
+@enduml
