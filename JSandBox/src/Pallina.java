@@ -83,7 +83,7 @@ public class Pallina {
     
     
   
-    public boolean isPresente() {
+    public boolean Visibile() {
         return Visibilita;
     }
 
