@@ -120,7 +120,7 @@ public class Sabbia {
         return dir;
     }
 
-    public void visualizzaAcqua() {
+    public void visualizzaSabbia() {
         System.out.println("Altezza sinistra: " + altezzaOvest
                 + "\nAltezza destra: " + altezzaEst
                 + "\nAltezza davanti: " + altezzaNord
