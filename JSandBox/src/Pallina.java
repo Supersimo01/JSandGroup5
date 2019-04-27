@@ -26,11 +26,11 @@ public class Pallina {
    
   
 
-    public Pallina(float Velocita, Point Posizione, boolean Presente, float Dimensioni, Color Colore) {
+    public Pallina(float Velocita, Point Posizione, boolean Visibilita, float Dimensioni, Color Colore) {
       
         this.Velocita = Velocita;
         this.Posizione = Posizione;
-        this.Visibilita = Presente;
+        this.Visibilita = Visibilita;
         this.Dimensioni = Dimensioni;
         this.Colore = Colore;
     }
