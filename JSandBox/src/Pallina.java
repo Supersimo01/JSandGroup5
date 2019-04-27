@@ -81,6 +81,7 @@ public class Pallina {
         Visibilita = true;
     }
     
+    
   
     public boolean isPresente() {
         return Visibilita;
