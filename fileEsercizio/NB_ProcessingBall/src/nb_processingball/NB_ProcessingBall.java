@@ -7,15 +7,18 @@ package nb_processingball;
 
 import processing.core.PApplet;
 
+
 /**
- *
- * @author scuola
+ * @author Turati
  */
+
 public class NB_ProcessingBall extends PApplet {
 
     static DatiCondivisi datiC; // dati condivisi
-    static ThBall[] threadPalline;    // vettore con i threads
-    static int numBalls;        // numero di balls e di thread
+    /** vettore con i threads */
+    static ThBall[] threadPalline;   
+    /** numero di balls e di thread */
+    static int numBalls;        
 
     /**
      * @param args the command line arguments
@@ -47,11 +50,13 @@ public class NB_ProcessingBall extends PApplet {
     }
 
     /**
-     * @configura le
+     * @brief configura le impostazioni di resa grafica
      */
     public void setup() {
-        frameRate(30);//imposta il frame rate
-        ellipseMode(RADIUS);//imposta gli ellissi come circonferenze 
+        /** imposta il frame rate */
+        frameRate(30);
+        /** imposta gli ellissi come circonferenze */
+        ellipseMode(RADIUS); 
     }
 
     /**
@@ -62,12 +67,13 @@ public class NB_ProcessingBall extends PApplet {
             exit();
         }
 
-        // clean the screen
+         /** pulsice lo schermo */
         background(datiC.getRed(), datiC.getGreen(), datiC.getBlue());//imposta il colore di default
 
-        // mostra tutte le palline
+         /** fa apparire tutte le palline */
         for (int i = 0; i < datiC.numBalls(); i++) {
-            display(datiC.getBalls(i));//aggiunge la palline da disegnare
+         /** aggiunge la palline da disegnare */
+            display(datiC.getBalls(i));
         }
     }
 
@@ -77,10 +83,15 @@ public class NB_ProcessingBall extends PApplet {
      * @param ball 
      */
     void display(Ball ball) {
-        fill(color(200, 200, 200));//imposta il colore dei rettangoli
-        rect(0, 0, 115, 115, 16);//disegna il rettangolo di sinistra
-        rect(115, 0, 115, 115, 16);//disegna il rettangolo di destra
-        fill(color(240, 0, 0));//imposta il colore della pallina
-        ellipse(ball.getXpos(), ball.getYpos(), ball.getRad(), ball.getRad());// disegna le palline
+         /** imposta il colore dei rettangoli */
+        fill(color(200, 200, 200));
+         /**disegna il rettangolo di sinistra */
+        rect(0, 0, 115, 115, 16);
+         /** disegna il rettangolo di destra */
+        rect(115, 0, 115, 115, 16);
+         /** imposta il colore della pallina */
+        fill(color(240, 0, 0));
+        /**disegna le palline */
+        ellipse(ball.getXpos(), ball.getYpos(), ball.getRad(), ball.getRad());
     }
 }
