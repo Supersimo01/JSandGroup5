@@ -1,18 +1,34 @@
 package nb_processingball;
 
-public class Ball {
+/**
+ * @author Turati
+ */
 
+/**
+ * Class Ball: this class summarizes all the specifications of a ball and his method,
+ * wich are used to move it on the screen.
+ */
+public class Ball {
+/**  */
     DatiCondivisi dataC;
-    int rad;            // Width of the shape
+/**  Width of the shape */
+    int rad;           
+/**  Position on the x axis */
     float xpos;
-    float ypos;   // Starting position of shape    
-    double xspeed;      // Speed of the shape
+/**  Position on the y axis */
+    float ypos;   
+/**  Speed of the shape */    
+    double xspeed;
+    
     //double yspeed;      // Speed of the shape
 
-    int xdirection;     // Left or Right
+  /** Direction of the ball on the x axis (Left or Right) */
+    int xdirection;   
+    
     //int ydirection;     // Top to Bottom
-    int widthScreen;    // width of the screen
-    int heightScreen;   // height of the screen
+    
+    int widthScreen;    
+    int heightScreen;   
 
     /**
      * @brief costruttore con parametri
@@ -25,7 +41,7 @@ public class Ball {
         //yspeed = 2.2;   // Speed of the shape
 
         if ((int) (Math.random() * 200) % 2 == 0) {
-            xdirection = 1;     // Left or Right
+            xdirection = 1;     // Left to Right
         } else {
             xdirection = -1;  //  Right to Left
         }
@@ -40,7 +56,9 @@ public class Ball {
         heightScreen = 0;
     }
 
-    // Move ball
+    /**
+     * @brief Method used to move the ball, updating the positions on the axis
+     */
     public void move() {
         // Update the position of the ball
         xpos = xpos + (float) (xspeed * xdirection * dataC.getInclinazione());
@@ -55,12 +73,18 @@ public class Ball {
           //  ydirection *= -1;
        // }
     }
-
+    
+    /**
+     * @brief Method that increase the speed 
+     */
     public void incVel() {
         xspeed += 0.2;
         //yspeed += 0.2;
     }
-
+    
+    /**
+     * @brief Method that decrease the speed 
+     */
     public void decVel() {
         xspeed -= 0.2;
         if (xspeed < 0) {
@@ -73,20 +97,34 @@ public class Ball {
         }
         */
     }
-
+    
+    /**
+     * @brief Method that set the width and the height of the screen
+     * @param width is the new width
+     * @param height is the new height
+     */
     void setScreen(int width, int height) {
-        widthScreen = 230;//imposta la lunghezza dello schermo
-        heightScreen = 115;//imposta l'altezza dello schermo
+        widthScreen = width;
+        heightScreen = height;
     }
 
+   /**
+     * @return xpos the position of the ball on the x axis 
+     */
     public float getXpos() {
         return xpos;
     }
-
+    
+    /**
+     * @return rad the width of the ball
+     */
     public int getRad() {
         return rad;
     }
-
+    
+    /**
+     * @return xpos the position of the ball on the y axis 
+     */
     public float getYpos() {
         return ypos;
     }
