@@ -6,8 +6,8 @@
 package nb_processingball;
 
 /**
- *
- * @author scuola
+ * @version 0.1
+ * @author Mauri Simone
  */
 public class DatiCondivisi {
 
@@ -18,7 +18,49 @@ public class DatiCondivisi {
     private float green;
     private float blue;
     private float inclinazione;
+    
+    private float q1posAsseXRect;
+    private float q1posAsseYRect;
+    private float q1radRect1;
+    private float q1radRect2;
+    private float q2posAsseXRect;
+    private float q2posAsseYRect;
+    private float q2radRect1;
+    private float q2radRect2;
 
+    public float getQ1posAsseXRect() {
+        return q1posAsseXRect;
+    }
+
+    public float getQ1posAsseYRect() {
+        return q1posAsseYRect;
+    }
+
+    public float getQ1radRect1() {
+        return q1radRect1;
+    }
+
+    public float getQ1radRect2() {
+        return q1radRect2;
+    }
+
+    public float getQ2posAsseXRect() {
+        return q2posAsseXRect;
+    }
+
+    public float getQ2posAsseYRect() {
+        return q2posAsseYRect;
+    }
+
+    public float getQ2radRect1() {
+        return q2radRect1;
+    }
+
+    public float getQ2radRect2() {
+        return q2radRect2;
+    }
+
+    
     /**
      * @brief costruttore con parametri
      * @param numBalls
@@ -27,6 +69,9 @@ public class DatiCondivisi {
      */
     public DatiCondivisi(int numBalls, int width, int height) {
 
+        
+        //inizializzare variabili
+        
         palline = new Ball[numBalls];
         // Set the starting position of the palline
         for (int i = 0; i < palline.length; i++) {

@@ -14,7 +14,7 @@ import processing.core.PApplet;
 
 public class NB_ProcessingBall extends PApplet {
 
-    static DatiCondivisi datiC; // dati condivisi
+    static DatiCondivisi dc; // dati condivisi
     /** vettore con i threads */
     static ThBall[] threadPalline;   
     /** numero di balls e di thread */
@@ -25,7 +25,7 @@ public class NB_ProcessingBall extends PApplet {
      */
     public static void main(String[] args) {
         numBalls = 1;
-        datiC = new DatiCondivisi(numBalls);
+        dc = new DatiCondivisi(numBalls);
         threadPalline = new ThBall[numBalls];
         for (int i = 0; i < threadPalline.length; i++) {
             threadPalline[i] = new ThBall(datiC, i);
@@ -33,7 +33,7 @@ public class NB_ProcessingBall extends PApplet {
 
         PApplet.main(new String[]{"nb_processingball.NB_ProcessingBall"});
 
-        SwingGui swingGui = new SwingGui(datiC);
+        SwingGui swingGui = new SwingGui(dc);
         // shows Swing windows
         swingGui.show();
     }
@@ -43,7 +43,7 @@ public class NB_ProcessingBall extends PApplet {
      */
     public void settings() {
         size(230, 115);//imposta la grandezza dello schermo
-        datiC.setScreen(width, height);//la salva su dati condivisi
+        dc.setScreen(width, height);//la salva su dati condivisi
         for (int i = 0; i < threadPalline.length; i++) {//fa partire ogni thread di palline
             threadPalline[i].start();
         }
@@ -63,17 +63,17 @@ public class NB_ProcessingBall extends PApplet {
      * @brief classe usata per impostare il colore di sfondo e le palline
      */
     public void draw() {
-        if (!datiC.isRunning()) {
+        if (!dc.isRunning()) {
             exit();
         }
 
          /** pulsice lo schermo */
-        background(datiC.getRed(), datiC.getGreen(), datiC.getBlue());//imposta il colore di default
+        background(dc.getRed(), dc.getGreen(), dc.getBlue());//imposta il colore di default
 
          /** fa apparire tutte le palline */
-        for (int i = 0; i < datiC.numBalls(); i++) {
+        for (int i = 0; i < dc.numBalls(); i++) {
          /** aggiunge la palline da disegnare */
-            display(datiC.getBalls(i));
+            display(dc.getBalls(i));
         }
     }
 
@@ -82,11 +82,11 @@ public class NB_ProcessingBall extends PApplet {
      * @brief disegna le palline
      * @param ball 
      */
-    void display(Ball ball) {
+    void display(Ball ball) { //terminare variabili condivise
          /** imposta il colore dei rettangoli */
         fill(color(200, 200, 200));
          /**disegna il rettangolo di sinistra */
-        rect(0, 0, 115, 115, 16);
+        rect(dc.getQ1posAsseXRect(), dc.getQ1posAsseYRect(), 115, 115, 16);
          /** disegna il rettangolo di destra */
         rect(115, 0, 115, 115, 16);
          /** imposta il colore della pallina */
