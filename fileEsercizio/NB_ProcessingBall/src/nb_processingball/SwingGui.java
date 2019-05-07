@@ -20,11 +20,12 @@ import javax.swing.JPanel;
  */
 
 public class SwingGui {
-
+    
+    /** indica il frame */
     private JFrame frame;
 
     /**
-     * @brief costruttore vuoto
+     * @brief Costruttore con un parametro che crea un frame, 4 bottoni, il pannello dove aggiungere i bottoni ed aggiunge il pannello alla finestra.
      * @param datiC 
      */
     public SwingGui(DatiCondivisi datiC) {
@@ -97,7 +98,7 @@ public class SwingGui {
     }
 
     /**
-     * @brief rende visibile la finestra
+     * @brief Rende visibile la finestra.
      */
     public void show() {
         frame.setVisible(true);
