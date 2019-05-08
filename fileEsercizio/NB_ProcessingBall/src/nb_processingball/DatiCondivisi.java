@@ -18,80 +18,40 @@ public class DatiCondivisi {
     private float green;
     private float blue;
     private float inclinazione;
-    
-    private float q1posAsseXRect;
-    private float q1posAsseYRect;
-    private float q1radRect1;
-    private float q1radRect2;
-    private float q1angRect;
-    
-    
-    private float q2posAsseXRect;
-    private float q2posAsseYRect;
-    private float q2radRect1;
-    private float q2radRect2;
-    private float q2angRect;
 
-    public float getQ1posAsseXRect() {
-        return q1posAsseXRect;
-    }
-
-    public float getQ1posAsseYRect() {
-        return q1posAsseYRect;
-    }
-
-    public float getQ1radRect1() {
-        return q1radRect1;
-    }
-
-    public float getQ1radRect2() {
-        return q1radRect2;
-    }
-    
-    public float q1angRect() {
-        return q1angRect;
-    }
-
-    public float getQ2posAsseXRect() {
-        return q2posAsseXRect;
-    }
-
-    public float getQ2posAsseYRect() {
-        return q2posAsseYRect;
-    }
-
-    public float getQ2radRect1() {
-        return q2radRect1;
-    }
-
-    public float getQ2radRect2() {
-        return q2radRect2;
-    }
-    
-    public float q2angRect() {
-        return q2angRect;
-    }
-
-    
+    /**
+     * @brief posizione del primo rettangolo sull'asse x
+     */
+    private float posX1;
+    /**
+     * @brief posizione del secondo rettangolo sull'asse x
+     */
+    private float posX2;
+    /**
+     * @brief posizione del primo rettangolo sull'asse y
+     */
+    private float posY1;
+    /**
+     * @brief posizione del secondo rettangolo sull'asse y
+     */
+    private float posY2;
+    /**
+     * @brief radiante dei rettangoli
+     */
+    private float radRect;
+    /**
+     * @brief smussatura dei rettangoli
+     */
+    private float smussatura;
+            
     /**
      * @brief costruttore con parametri
      * @param numBalls
      * @param width
      * @param height 
      */
-    public DatiCondivisi(int numBalls, int width, int height, float r1v1,float r1v2,float r1v3,float r1v4,float r1v5, float r2v1,float r2v2,float r2v3,float r2v4,float r2v5) {
+    public DatiCondivisi(int numBalls, int width, int height) {
 
-      q1posAsseXRect = r1v1;
-      q1posAsseYRect= r1v2;
-      q1radRect1= r1v3;
-      q1radRect2= r1v4;
-      q2angRect= r1v5;
-      
-      q2posAsseXRect= r2v1;
-      q2posAsseYRect= r2v2;
-      q2radRect1= r2v3;
-      q2radRect2= r2v4;
-      q2angRect= r2v5;
         
         //inizializzare variabili
         
@@ -122,56 +82,106 @@ public class DatiCondivisi {
         green = 0;
         blue = 64;
         inclinazione = 0;
+        
+        //set parametri di default dei rettangoli
+        posX1 = 0;
+        posX2 = 115;
+        posY1 = 0;
+        posY2 = 0;
+        radRect = 115;
+        smussatura = 6;
     }
 
+    /**
+     * @param i
+     * @return {@palline} di un undice
+     */
     public Ball getBalls(int i) {
         return palline[i];
     }
 
+    /**
+     * @brief decrementa {@running}
+     */
     public void decRunning() {
         running--;
     }
 
+    
+    /**
+     * @return se sta runnando
+     */
     public boolean isRunning() {
         return running > 0;
     }
 
+    
+    /**
+     * @return numero delle palline
+     */
     public int numBalls() {
         return palline.length;
     }
 
+    /**
+     * @param red, green, blue
+     * @brief imposta il colore di default delle palline
+     */
     public void setColor(float red, float green, float blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
     }
 
+    
+    /**
+     * @brief incrementa la velocità di tutte le palline
+     */
     public void incVel() {
         for (int i = 0; i < palline.length; i++) {
             palline[i].incVel();
         }
     }
 
+    
+    /**
+     * @brief decrementa la velocità di tutte le palline
+     */
     public void decVel() {
         for (int i = 0; i < palline.length; i++) {
             palline[i].decVel();
         }
     }
 
+    
+    /**
+     * @param width, height
+     * @brief imposta i parametri dello schermo (lunghezza e altezza)
+     */
     public void setScreen(int width, int height) {
         for (int i = 0; i < palline.length; i++) {
             palline[i].setScreen(width, height);
         }
     }
 
+    
+    /**
+     * @return valore del colore rosso
+     */
     public float getRed() {
         return red;
     }
 
+    /**
+     * @return valore del colore verde
+     */
     public float getGreen() {
         return green;
     }
 
+    /**
+     * @return valore del colore blu
+     */
     public float getBlue() {
         return blue;
     }
@@ -195,5 +205,50 @@ public class DatiCondivisi {
      */
     public float getInclinazione(){
         return inclinazione;
+    }
+    
+    /**
+     * @return valore posizione nell'asse x del primo rettangolo
+     */
+    public float getPosX1() {
+        return posX1;
+    }
+
+    
+    /**
+     * @return valore posizione nell'asse x del secondo rettangolo
+     */
+    public float getPosX2() {
+        return posX2;
+    }
+
+    
+    /**
+     * @return valore posizione nell'asse y del primo rettangolo
+     */
+    public float getPosY1() {
+        return posY1;
+    }
+
+    
+    /**
+     * @return valore posizione nell'asse y del secondo rettangolo
+     */
+    public float getPosY2() {
+        return posY2;
+    }
+    
+    /**
+     * @return valore posizione del radiante dei rettangoli
+     */
+    public float getRadRect() {
+        return radRect;
+    }
+
+    /**
+     * @return valore smussatorua dei rettangoli
+     */
+    public float getSmussatura() {
+        return smussatura;
     }
 }

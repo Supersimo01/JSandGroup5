@@ -60,18 +60,20 @@ public class Ball {
      * @brief Method used to move the ball, updating the positions on the axis
      */
     public void move() {
-        // Update the position of the ball
+        // Aggiornare la posizione della pallina
         xpos = xpos + (float) (xspeed * xdirection * dataC.getInclinazione());
         //ypos = ypos + (float) (yspeed * ydirection);
 
-        // Test to see if the ball exceeds the boundaries of the screen
-        // If it does, reverse its direction by multiplying by -1
+        
+        // Controlla se la pallina ha raggiunto il bordo dello schermo
+        //Se l'ha raggiunto si blocca
         if (xpos > widthScreen - rad || xpos < rad) {
-            xdirection *= -1;
+            xdirection *= 0;
         }
+        
         //if (ypos > heightScreen - rad || ypos < rad) {
           //  ydirection *= -1;
-       // }
+       // }xdirection = 
     }
     
     /**

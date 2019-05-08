@@ -25,10 +25,10 @@ public class NB_ProcessingBall extends PApplet {
      */
     public static void main(String[] args) {
         numBalls = 1;
-        dc = new DatiCondivisi(numBalls,0,0,115,115,16,115,115,115,115,16);
+        dc = new DatiCondivisi(numBalls);
         threadPalline = new ThBall[numBalls];
         for (int i = 0; i < threadPalline.length; i++) {
-            threadPalline[i] = new ThBall(datiC, i);
+            threadPalline[i] = new ThBall(dc, i);
         }
 
         PApplet.main(new String[]{"nb_processingball.NB_ProcessingBall"});
@@ -86,9 +86,9 @@ public class NB_ProcessingBall extends PApplet {
          /** imposta il colore dei rettangoli */
         fill(color(200, 200, 200));
          /**disegna il rettangolo di sinistra */
-        rect(dc.getQ1posAsseXRect(), dc.getQ1posAsseYRect(), dc.getQ1radRect1(), dc.getQ1radRect2(), 16);
+        rect(dc.getPosX1(), dc.getPosY1(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
          /** disegna il rettangolo di destra */
-        rect(dc.getQ2posAsseXRect(), dc.getQ2posAsseYRect(), gdc.etQ2radRect1(), getQ2radRect2(), 16);
+        rect(dc.getPosX2(), dc.getPosY2(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
          /** imposta il colore della pallina */
         fill(color(240, 0, 0));
         /**disegna le palline */
