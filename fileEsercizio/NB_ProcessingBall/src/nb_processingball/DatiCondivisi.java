@@ -17,24 +17,33 @@ public class DatiCondivisi {
     private float red;
     private float green;
     private float blue;
-    private float inclinazione;
+    private float inclinazioneX;
+    private float inclinazioneY;
 
     /**
-     * @brief posizione del primo rettangolo sull'asse x
+     * @brief posizione y dei rettangoli nella prima colonna
      */
-    private float posX1;
+    private float posPrimaRiga;
     /**
-     * @brief posizione del secondo rettangolo sull'asse x
+     * @brief posizione y dei rettangoli nella seconda colonna
      */
-    private float posX2;
+    private float posSecondaRiga;
     /**
-     * @brief posizione del primo rettangolo sull'asse y
+     * @brief posizione y dei rettangoli nella terza colonna
      */
-    private float posY1;
+    private float posTerzaRiga;
     /**
-     * @brief posizione del secondo rettangolo sull'asse y
+     * @brief posizione x dei rettangoli nella prima riga
      */
-    private float posY2;
+    private float posPrimaColonna;
+    /**
+     * @brief posizione x dei rettangoli nella seconda riga
+     */
+    private float posSecondaColonna;
+    /**
+     * @brief posizione x dei rettangoli nella terzza riga
+     */
+    private float posTerzaColonna;
     /**
      * @brief radiante dei rettangoli
      */
@@ -64,7 +73,8 @@ public class DatiCondivisi {
         red = 64;
         green = 64;
         blue = 64;
-        inclinazione = 0;
+        inclinazioneX = 0;
+        inclinazioneY = 0;
     }
 
     /**
@@ -81,13 +91,16 @@ public class DatiCondivisi {
         red = 64;
         green = 0;
         blue = 64;
-        inclinazione = 0;
+        inclinazioneX = 0;
+        inclinazioneY = 0;
         
         //set parametri di default dei rettangoli
-        posX1 = 0;
-        posX2 = 115;
-        posY1 = 0;
-        posY2 = 0;
+        posPrimaRiga = 0;
+        posSecondaRiga = 115;
+        posTerzaRiga = 230;
+        posPrimaColonna = 0;
+        posSecondaColonna = 115;
+        posTerzaColonna = 230;
         radRect = 115;
         smussatura = 6;
     }
@@ -187,55 +200,67 @@ public class DatiCondivisi {
     }
 
     /**
-     * @brief incrementa l'inclinazione
+     * @brief incrementa l'inclinazione x
      */
-    public void incInclinazione(){
-        inclinazione += 0.4;
+    public void incInclinazioneX(){
+        inclinazioneX += 0.4;
+    }
+    
+    /**
+     * @brief decrementa l'inclinazione x
+     */
+    public void decInclinazioneX(){
+        inclinazioneX -= 0.4;
+    }
+    
+    /**
+     * @return {@inclinazioneX}
+     */
+    public float getInclinazioneX(){
+        return inclinazioneX;
+    }
+    /**
+     * @brief incrementa l'inclinazione x
+     */
+    public void incInclinazioneY(){
+        inclinazioneY += 0.4;
     }
     
     /**
      * @brief decrementa l'inclinazione
      */
-    public void decInclinazione(){
-        inclinazione -= 0.4;
+    public void decInclinazioneY(){
+        inclinazioneY -= 0.4;
     }
     
     /**
      * @return {@inclinazione}
      */
-    public float getInclinazione(){
-        return inclinazione;
+    public float getInclinazioneY(){
+        return inclinazioneY;
     }
     
     /**
-     * @return valore posizione nell'asse x del primo rettangolo
+     * @return valore posizione della prima riga
      */
-    public float getPosX1() {
-        return posX1;
-    }
-
-    
-    /**
-     * @return valore posizione nell'asse x del secondo rettangolo
-     */
-    public float getPosX2() {
-        return posX2;
+    public float getPosPrimaRiga() {
+        return posPrimaRiga;
     }
 
     
     /**
-     * @return valore posizione nell'asse y del primo rettangolo
+     * @return valore posizione della seconda riga
      */
-    public float getPosY1() {
-        return posY1;
+    public float getPosSecondaRiga() {
+        return posSecondaRiga;
     }
 
     
     /**
-     * @return valore posizione nell'asse y del secondo rettangolo
+     * @return valore posizione prima colonna
      */
-    public float getPosY2() {
-        return posY2;
+    public float getPosPrimaColonna() {
+        return posPrimaColonna;
     }
     
     /**
@@ -250,5 +275,26 @@ public class DatiCondivisi {
      */
     public float getSmussatura() {
         return smussatura;
+    }
+
+    /**
+     * @return posizione terza riga
+     */
+    public float getPosTerzaRiga() {
+        return posTerzaRiga;
+    }
+    
+    /**
+     * @return posizione seconda colonna
+     */
+    public float getPosSecondaColonna() {
+        return posSecondaColonna;
+    }
+
+    /**
+     * @return posizione terza colonna
+     */
+    public float getPosTerzaColonna() {
+        return posTerzaColonna;
     }
 }

@@ -42,8 +42,8 @@ public class NB_ProcessingBall extends PApplet {
      * @brief configura le impostazioni di default del gioco
      */
     public void settings() {
-        size(230, 115);//imposta la grandezza dello schermo
-        dc.setScreen(width, height);//la salva su dati condivisi
+        size(230, 230);//imposta la grandezza dello schermo
+        dc.setScreen(230, 230);//la salva su dati condivisi
         for (int i = 0; i < threadPalline.length; i++) {//fa partire ogni thread di palline
             threadPalline[i].start();
         }
@@ -63,9 +63,6 @@ public class NB_ProcessingBall extends PApplet {
      * @brief classe usata per impostare il colore di sfondo e le palline
      */
     public void draw() {
-        if (!dc.isRunning()) {
-            exit();
-        }
 
          /** pulsice lo schermo */
         background(dc.getRed(), dc.getGreen(), dc.getBlue());//imposta il colore di default
@@ -83,15 +80,19 @@ public class NB_ProcessingBall extends PApplet {
      * @param ball 
      */
     void display(Ball ball) { //terminare variabili condivise
-         /** imposta il colore dei rettangoli */
+         // imposta il colore dei rettangoli
         fill(color(200, 200, 200));
-         /**disegna il rettangolo di sinistra */
-        rect(dc.getPosX1(), dc.getPosY1(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
-         /** disegna il rettangolo di destra */
-        rect(dc.getPosX2(), dc.getPosY2(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
-         /** imposta il colore della pallina */
+         //disegna il primo rettangolo
+        rect(dc.getPosPrimaColonna(), dc.getPosPrimaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
+         // disegna il secondo rettangolo
+        rect(dc.getPosSecondaColonna(), dc.getPosPrimaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
+         // disegna il terzo rettangolo
+        rect(dc.getPosPrimaColonna(), dc.getPosSecondaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
+         // disegna il quarto rettangolo
+        rect(dc.getPosSecondaColonna(), dc.getPosSecondaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
+         // imposta il colore della pallina
         fill(color(240, 0, 0));
-        /**disegna le palline */
+        // disegna le palline
         ellipse(ball.getXpos(), ball.getYpos(), ball.getRad(), ball.getRad());
     }
 }

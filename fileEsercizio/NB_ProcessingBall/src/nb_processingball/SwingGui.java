@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -67,34 +68,72 @@ public class SwingGui {
             }
         });
 
+        JLabel labelIncX = new JLabel("Inclinazione asse x:");
+        JLabel labelX = new JLabel("");
+        
         //crea il pulsante per incrementare l'inclinazione
-        JButton buttonIncInclin = new JButton("Incrementa Inclinazione");
-        buttonIncInclin.addActionListener(new ActionListener() {//quando viene pigiato
+        JButton buttonIncInclinX = new JButton("Incrementa Inclinazione X");
+        buttonIncInclinX.addActionListener(new ActionListener() {//quando viene pigiato
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               datiC.incInclinazione();//decrementa l'inclinazione
+               datiC.incInclinazioneX();//decrementa l'inclinazione x
+               float inc = datiC.getInclinazioneY();
+               labelX.setText(Float.toString(inc));//aggiorna la label con l'inclinazione corretta
             }
         });
         //crea il pulsante per decrementare l'inclinazione
-        JButton buttonDecInclin = new JButton("Decrementa Inclinazione");
-        buttonDecInclin.addActionListener(new ActionListener() {//quando viene pigiato
+        JButton buttonDecInclinX = new JButton("Decrementa Inclinazione X");
+        buttonDecInclinX.addActionListener(new ActionListener() {//quando viene pigiato
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               datiC.decInclinazione();//decrementa l'inclinazione
+               datiC.decInclinazioneX();//decrementa l'inclinazione x
+               float inc = datiC.getInclinazioneY();
+               labelX.setText(Float.toString(inc));//aggiorna la label con l'inclinazione corretta
             }
         });
         
+        JLabel labelIncY = new JLabel("Inclinazione asse y:");
+        JLabel labelY = new JLabel("");
+        //crea il pulsante per decrementare l'inclinazione
+        JButton buttonIncInclinY = new JButton("Incrementa Inclinazione Y");
+        buttonIncInclinY.addActionListener(new ActionListener() {//quando viene pigiato
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               datiC.incInclinazioneY();//incrementa l'inclinazione y
+               float inc = datiC.getInclinazioneY();
+               labelY.setText(Float.toString(inc));//aggiorna la label con l'inclinazione corretta
+            }
+        });
+        
+        //crea il pulsante per decrementare l'inclinazione
+        JButton buttonDecInclinY = new JButton("Decrementa Inclinazione Y");
+        buttonDecInclinY.addActionListener(new ActionListener() {//quando viene pigiato
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               datiC.decInclinazioneY();//decrementa l'inclinazione y
+               float inc = datiC.getInclinazioneY();
+               labelY.setText(Float.toString(inc));//aggiorna la label con l'inclinazione corretta
+            }
+        });
         //aggiunge i pulsanti al pannello
         controls.add(pickColor);
         controls.add(incBtn);
         controls.add(delBtn);
-        controls.add(buttonIncInclin);
-        controls.add(buttonDecInclin);
+        controls.add(buttonIncInclinX);
+        controls.add(buttonDecInclinX);
+        controls.add(buttonIncInclinY);
+        controls.add(buttonDecInclinY);
+        controls.add(labelIncX);
+        controls.add(labelX);
+        controls.add(labelIncY);
+        controls.add(labelY);
         //aggiunge il pannello nella finestra
         frame.add(controls);
-        frame.setSize(400, 120);//imposta le dimensioni del pannello
+        frame.setSize(400, 160);//imposta le dimensioni del pannello
     }
 
     /**

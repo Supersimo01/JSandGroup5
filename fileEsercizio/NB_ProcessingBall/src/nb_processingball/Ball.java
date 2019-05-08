@@ -20,12 +20,9 @@ public class Ball {
 /**  Speed of the shape */    
     double xspeed;
     
-    //double yspeed;      // Speed of the shape
+    double yspeed;      // Speed of the shape
 
-  /** Direction of the ball on the x axis (Left or Right) */
-    int xdirection;   
     
-    //int ydirection;     // Top to Bottom
     
     int widthScreen;    
     int heightScreen;   
@@ -38,18 +35,7 @@ public class Ball {
         dataC = datiCondivisi;
         rad = 20;       // Width of the shape
         xspeed = 4.8;   // Speed of the shape
-        //yspeed = 2.2;   // Speed of the shape
-
-        if ((int) (Math.random() * 200) % 2 == 0) {
-            xdirection = 1;     // Left to Right
-        } else {
-            xdirection = -1;  //  Right to Left
-        }
-        //if ((int) (Math.random() * 200) % 2 == 0) {
-            //ydirection = 1;  // Top to Bottom
-        //} else {
-           // ydirection = -1;  //  Bottom to Top
-        //}
+        yspeed = 4.8;   // Speed of the shape
         xpos = 35;//imposta la posizione della pallina sull'asse x
         ypos = 57;//imposta la posizione della pallina sull'asse y
         widthScreen = 0;
@@ -57,23 +43,45 @@ public class Ball {
     }
 
     /**
-     * @brief Method used to move the ball, updating the positions on the axis
+     * @brief muove la pallina in orizzontale
      */
-    public void move() {
-        // Aggiornare la posizione della pallina
-        xpos = xpos + (float) (xspeed * xdirection * dataC.getInclinazione());
-        //ypos = ypos + (float) (yspeed * ydirection);
-
-        
-        // Controlla se la pallina ha raggiunto il bordo dello schermo
-        //Se l'ha raggiunto si blocca
-        if (xpos > widthScreen - rad || xpos < rad) {
-            xdirection *= 0;
-        }
-        
-        //if (ypos > heightScreen - rad || ypos < rad) {
-          //  ydirection *= -1;
-       // }xdirection = 
+    public void moveX() {
+            // Aggiorna la posizione della pallina
+            xpos = xpos + (float) (xspeed  * dataC.getInclinazioneX());
+    }
+    
+    /**
+     * @brief muove la pallina in verticale
+     */
+    public void moveY() {
+            // Aggiorna la posizione della pallina
+            ypos = ypos + (float) (yspeed * dataC.getInclinazioneY());
+    }
+    
+    /**
+     * @return -1, se la pallina ha raggiunto il bordo sinistro
+     * @return 1, se la pallina ha raggiunto il bordo destro
+     * @return 0, se la pallina non ha raggiunto il bordo
+     */
+    public int ifBordoOrizz(){
+        if(xpos > widthScreen - rad)
+            return 1;
+        else if(xpos < rad)
+            return -1;
+        return 0;
+    }
+    
+    /**
+     * @return -1, se la pallina ha raggiunto il bordo alto
+     * @return 1, se la pallina ha raggiunto il bordo basso
+     * @return 0, se la pallina non ha raggiunto il bordo
+     */
+    public int ifBordoVert(){
+        if(ypos > heightScreen - rad)
+            return 1;
+        else if(ypos < rad)
+            return -1;
+        return 0;
     }
     
     /**
