@@ -25,7 +25,7 @@ public class NB_ProcessingBall extends PApplet {
      */
     public static void main(String[] args) {
         numBalls = 1;
-        dc = new DatiCondivisi(numBalls);
+        dc = new DatiCondivisi(numBalls,0,0,115,115,16,115,115,115,115,16);
         threadPalline = new ThBall[numBalls];
         for (int i = 0; i < threadPalline.length; i++) {
             threadPalline[i] = new ThBall(datiC, i);
