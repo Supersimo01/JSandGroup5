@@ -6,7 +6,7 @@
 package nb_processingball;
 
 /**
- * @version 0.1
+ * @version 0.8
  * @author Mauri Simone
  */
 public class DatiCondivisi {
@@ -67,8 +67,16 @@ public class DatiCondivisi {
      * @param width
      * @param height 
      */
-    public DatiCondivisi(int numBalls, int width, int height) {
+    public DatiCondivisi(int numBalls, int width, int height, float r1v1,float r1v2,float r1v3,float r1v4, float r2v1,float r2v2,float r2v3,float r2v4) {
 
+      q1posAsseXRect = r1v1;
+      q1posAsseYRect= r1v2;
+      q1radRect1= r1v3;
+      q1radRect2= r1v4;
+      q2posAsseXRect= r2v1;
+      q2posAsseYRect= r2v2;
+      q2radRect1= r2v3;
+      q2radRect2= r2v4;
         
         //inizializzare variabili
         
