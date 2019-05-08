@@ -23,10 +23,14 @@ public class DatiCondivisi {
     private float q1posAsseYRect;
     private float q1radRect1;
     private float q1radRect2;
+    private float q1angRect;
+    
+    
     private float q2posAsseXRect;
     private float q2posAsseYRect;
     private float q2radRect1;
     private float q2radRect2;
+    private float q2angRect;
 
     public float getQ1posAsseXRect() {
         return q1posAsseXRect;
@@ -42,6 +46,10 @@ public class DatiCondivisi {
 
     public float getQ1radRect2() {
         return q1radRect2;
+    }
+    
+    public float q1angRect() {
+        return q1angRect;
     }
 
     public float getQ2posAsseXRect() {
@@ -59,6 +67,10 @@ public class DatiCondivisi {
     public float getQ2radRect2() {
         return q2radRect2;
     }
+    
+    public float q2angRect() {
+        return q2angRect;
+    }
 
     
     /**
@@ -67,16 +79,19 @@ public class DatiCondivisi {
      * @param width
      * @param height 
      */
-    public DatiCondivisi(int numBalls, int width, int height, float r1v1,float r1v2,float r1v3,float r1v4, float r2v1,float r2v2,float r2v3,float r2v4) {
+    public DatiCondivisi(int numBalls, int width, int height, float r1v1,float r1v2,float r1v3,float r1v4,float r1v5, float r2v1,float r2v2,float r2v3,float r2v4,float r2v5) {
 
       q1posAsseXRect = r1v1;
       q1posAsseYRect= r1v2;
       q1radRect1= r1v3;
       q1radRect2= r1v4;
+      q2angRect= r1v5;
+      
       q2posAsseXRect= r2v1;
       q2posAsseYRect= r2v2;
       q2radRect1= r2v3;
       q2radRect2= r2v4;
+      q2angRect= r2v5;
         
         //inizializzare variabili
         
