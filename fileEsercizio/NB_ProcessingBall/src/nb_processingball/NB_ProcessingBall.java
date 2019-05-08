@@ -86,9 +86,9 @@ public class NB_ProcessingBall extends PApplet {
          /** imposta il colore dei rettangoli */
         fill(color(200, 200, 200));
          /**disegna il rettangolo di sinistra */
-        rect(dc.getQ1posAsseXRect(), dc.getQ1posAsseYRect(), 115, 115, 16);
+        rect(dc.getQ1posAsseXRect(), dc.getQ1posAsseYRect(), dc.getQ1radRect1(), dc.getQ1radRect2(), 16);
          /** disegna il rettangolo di destra */
-        rect(115, 0, 115, 115, 16);
+        rect(dc.getQ2posAsseXRect(), dc.getQ2posAsseYRect(), gdc.etQ2radRect1(), getQ2radRect2(), 16);
          /** imposta il colore della pallina */
         fill(color(240, 0, 0));
         /**disegna le palline */
