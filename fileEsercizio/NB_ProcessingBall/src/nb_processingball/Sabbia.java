@@ -1,3 +1,5 @@
+package nb_processingball;
+
 
 import java.awt.Color;
 
@@ -48,27 +50,61 @@ public class Sabbia {
     private float velocita;
 
     /**
-     * indica il colore della sabbia
+     * @brief posizione nell'asse x
+     */
+    private float xpos;
+    
+    /**
+     * @brief posizione nell'asse x
+     */
+    private float ypos;
+    
+    /**
+     * @brief radiante
+     */
+    private float rad;
+    
+    /**
+     * @brief velocità sull'asse x
+     */
+    private float xspeed;
+    /**
+     * @brief velocità sull'asse y
+     */
+    private float yspeed;
+    
+    /**
+     * @brief indica il colore della sabbia
      */
     private Color colore;
+    
+    
+    int widthScreen;    
+    int heightScreen;   
 
+    /**
+     * @brief dati condivisi
+     */
+    private DatiCondivisi dc;
     /**
      * @brief Costruttore vuoto che inizializza gli attributi con valori
      * predefiniti.
      *
      */
-    public Sabbia() {
-        altezzaOvest = 17f;
-        altezzaEst = 17f;
-        altezzaNord = 17f;
-        altezzaSud = 17f;
+    public Sabbia(DatiCondivisi dc1) {
+        //altezzaOvest = 17f;
+        //altezzaEst = 17f;
+        //altezzaNord = 17f;
+        //altezzaSud = 17f;
 
         uscitaX = 0f;
         uscitaY = 0f;
-
-        velocita = 0f;
+                
+        //velocita = 0f;
 
         colore = new Color(224, 161, 117);
+        
+        dc = dc1;
     }
 
     /**
@@ -79,17 +115,19 @@ public class Sabbia {
      * @param altezzaEst
      * @param velocita
      */
-    public Sabbia(float altezzaNord, float altezzaSud, float altezzaOvest, float altezzaEst, float velocita) {
-        this.altezzaNord = altezzaNord;
-        this.altezzaSud = altezzaSud;
-        this.altezzaOvest = altezzaOvest;
-        this.altezzaEst = altezzaEst;
-        this.velocita = velocita;
+    public Sabbia(float altezzaNord, float altezzaSud, float altezzaOvest, float altezzaEst, float velocita, DatiCondivisi dc1) {
+        //this.altezzaNord = altezzaNord;
+        //this.altezzaSud = altezzaSud;
+        //this.altezzaOvest = altezzaOvest;
+        //this.altezzaEst = altezzaEst;
+        //this.velocita = velocita;
 
         uscitaX = 0f;
         uscitaY = 0f;
 
         colore = new Color(224, 161, 117);
+        
+        dc = dc1;
     }
 
     /**
@@ -108,6 +146,14 @@ public class Sabbia {
         return altezzaSud;
     }
 
+    /**
+     *
+     * @return colore
+     */
+    public Color getColore() {
+        return colore;
+    }
+    
     /**
      *
      * @return altezzaOvest
@@ -178,7 +224,6 @@ public class Sabbia {
         } else {
             return false;
         }
-
     }
 
     /**
@@ -228,5 +273,80 @@ public class Sabbia {
                 + "\nAltezza davanti: " + altezzaNord
                 + "\nAltezza dietro: " + altezzaSud
                 + "\nVelocita: " + velocita);
+    }
+    
+    /**
+     * @brief muove la pallina in orizzontale
+     */
+    public void moveX() {
+            // Aggiorna la posizione della pallina
+            dc.setPosSabbiaY(xpos + (float) (xspeed  * dc.getInclinazioneX()));
+    }
+    
+    /**
+     * @brief muove la pallina in verticale
+     */
+    public void moveY() {
+            // Aggiorna la posizione della pallina
+            dc.setPosSabbiaY(ypos + (float) (yspeed * dc.getInclinazioneY()));
+    }
+    
+    /**
+     * @return -1, se la pallina ha raggiunto il bordo sinistro
+     * @return 1, se la pallina ha raggiunto il bordo destro
+     * @return 0, se la pallina non ha raggiunto il bordo
+     */
+    public int ifBordoOrizz(){
+        if(xpos > widthScreen - rad)
+            return 1;
+        else if(xpos < rad)
+            return -1;
+        return 0;
+    }
+    
+    /**
+     * @return -1, se la pallina ha raggiunto il bordo alto
+     * @return 1, se la pallina ha raggiunto il bordo basso
+     * @return 0, se la pallina non ha raggiunto il bordo
+     */
+    public int ifBordoVert(){
+        if(ypos > heightScreen - rad)
+            return 1;
+        else if(ypos < rad)
+            return -1;
+        return 0;
+    }
+    
+    /**
+     * @brief Method that increase the speed 
+     */
+    public void incVel() {
+        xspeed += 0.2;
+        //yspeed += 0.2;
+    }
+    
+    /**
+     * @brief Method that decrease the speed 
+     */
+    public void decVel() {
+        xspeed -= 0.2;
+        if (xspeed < 0)
+            xspeed = 0;
+        /*
+        yspeed -= 0.2;
+        if (yspeed < 0) {
+            yspeed = 0;
+        }
+        */
+    }
+    
+    /**
+     * @brief Method that set the width and the height of the screen
+     * @param width is the new width
+     * @param height is the new height
+     */
+    public void setScreen(int width, int height) {
+        widthScreen = width;
+        heightScreen = height;
     }
 }

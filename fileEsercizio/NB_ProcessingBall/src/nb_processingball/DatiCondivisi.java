@@ -5,6 +5,8 @@
  */
 package nb_processingball;
 
+import java.awt.Color;
+
 /**
  * @version 0.8
  * @author Mauri Simone
@@ -52,7 +54,25 @@ public class DatiCondivisi {
      * @brief smussatura dei rettangoli
      */
     private float smussatura;
-            
+    
+    /**
+     * @brief colore della sabbia
+     */
+    private Color coloreSabbia;
+    
+    /**
+     * @brief sabbia
+     */
+    private Sabbia sabbia;
+    /**
+     * @brief posizione asse x della sabbia
+     */
+    private float posSabbiaX;
+    
+    /**
+     * @brief posizione asse x della sabbia
+     */
+    private float posSabbiaY;
     /**
      * @brief costruttore con parametri
      * @param numBalls
@@ -75,6 +95,8 @@ public class DatiCondivisi {
         blue = 64;
         inclinazioneX = 0;
         inclinazioneY = 0;
+        sabbia = new Sabbia(this);
+        coloreSabbia = sabbia.getColore();
     }
 
     /**
@@ -97,9 +119,12 @@ public class DatiCondivisi {
         //set parametri di default dei rettangoli
         posPrimaRiga = 0;
         posSecondaRiga = 115;
+        posSabbiaX = 0;
+        posSabbiaY = 0;
         posTerzaRiga = 230;
         posPrimaColonna = 0;
         posSecondaColonna = 115;
+        sabbia = new Sabbia(this);
         posTerzaColonna = 230;
         radRect = 115;
         smussatura = 6;
@@ -111,6 +136,13 @@ public class DatiCondivisi {
      */
     public Ball getBalls(int i) {
         return palline[i];
+    }
+
+    /**
+     * @return sabbia
+     */
+    public Sabbia getSabbia() {
+        return sabbia;
     }
 
     /**
@@ -169,9 +201,11 @@ public class DatiCondivisi {
     
     /**
      * @param width, height
+     * @param height
      * @brief imposta i parametri dello schermo (lunghezza e altezza)
      */
     public void setScreen(int width, int height) {
+        sabbia.setScreen(width, height);
         for (int i = 0; i < palline.length; i++) {
             palline[i].setScreen(width, height);
         }
@@ -203,6 +237,7 @@ public class DatiCondivisi {
      * @brief incrementa l'inclinazione x
      */
     public void incInclinazioneX(){
+        if(inclinazioneX < 2.7)//se non ha inclinato più di 180 gradi
         inclinazioneX += 0.4;
     }
     
@@ -210,6 +245,7 @@ public class DatiCondivisi {
      * @brief decrementa l'inclinazione x
      */
     public void decInclinazioneX(){
+        if(inclinazioneX > -3.3)//se non ha inclinato più di 180 gradi
         inclinazioneX -= 0.4;
     }
     
@@ -223,6 +259,7 @@ public class DatiCondivisi {
      * @brief incrementa l'inclinazione x
      */
     public void incInclinazioneY(){
+        if(inclinazioneY < 2.7)//se non ha inclinato più di 180 gradi
         inclinazioneY += 0.4;
     }
     
@@ -230,6 +267,7 @@ public class DatiCondivisi {
      * @brief decrementa l'inclinazione
      */
     public void decInclinazioneY(){
+        if(inclinazioneY > -3.3)//se non ha inclinato più di 180 gradi
         inclinazioneY -= 0.4;
     }
     
@@ -297,4 +335,22 @@ public class DatiCondivisi {
     public float getPosTerzaColonna() {
         return posTerzaColonna;
     }
+    
+    
+    public float getPosSabbiaX(){
+        return posSabbiaX;
+    }
+    
+    public float getPosSabbiaY(){
+        return posSabbiaY;
+    }
+    
+    public void setPosSabbiaX(float posSabbiaX) {
+        this.posSabbiaX = posSabbiaX;
+    }
+
+    public void setPosSabbiaY(float posSabbiaY) {
+        this.posSabbiaY = posSabbiaY;
+    }
+    
 }

@@ -15,8 +15,10 @@ import processing.core.PApplet;
 public class NB_ProcessingBall extends PApplet {
 
     static DatiCondivisi dc; // dati condivisi
-    /** vettore con i threads */
+    /** vettore con i threads di palline */
     static ThBall[] threadPalline;   
+    /** thread di sabbia*/
+    static ThSabbia threadSabbia;   
     /** numero di balls e di thread */
     static int numBalls;        
 
@@ -26,7 +28,9 @@ public class NB_ProcessingBall extends PApplet {
     public static void main(String[] args) {
         numBalls = 1;
         dc = new DatiCondivisi(numBalls);
-        threadPalline = new ThBall[numBalls];
+        threadPalline = new ThBall[numBalls];//crea il vettore thread che gestiscono le palline
+        threadSabbia = new ThSabbia(dc);//crea il thread che gestisce la sabbia
+        threadSabbia.start();
         for (int i = 0; i < threadPalline.length; i++) {
             threadPalline[i] = new ThBall(dc, i);
         }
@@ -91,8 +95,11 @@ public class NB_ProcessingBall extends PApplet {
          // disegna il quarto rettangolo
         rect(dc.getPosSecondaColonna(), dc.getPosSecondaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
          // imposta il colore della pallina
-        fill(color(240, 0, 0));
+        //disegna la sabbia
+        fill(color(224, 161, 117));
+        rect(dc.getPosSabbiaX(), dc.getPosSabbiaY(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
         // disegna le palline
+        fill(color(dc.getRed(), dc.getGreen(), dc.getBlue()));
         ellipse(ball.getXpos(), ball.getYpos(), ball.getRad(), ball.getRad());
     }
 }
