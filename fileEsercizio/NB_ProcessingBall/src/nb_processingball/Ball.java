@@ -34,8 +34,8 @@ public class Ball {
     Ball(DatiCondivisi datiCondivisi) {
         dataC = datiCondivisi;
         rad = 20;       // Width of the shape
-        xspeed = 4.8;   // Speed of the shape
-        yspeed = 4.8;   // Speed of the shape
+        xspeed = 1;   // Speed of the shape
+        yspeed = 1;   // Speed of the shape
         xpos = 35;//imposta la posizione della pallina sull'asse x
         ypos = 57;//imposta la posizione della pallina sull'asse y
         widthScreen = 0;

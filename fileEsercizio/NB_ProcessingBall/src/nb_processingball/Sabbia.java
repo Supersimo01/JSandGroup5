@@ -60,11 +60,6 @@ public class Sabbia {
     private float ypos;
     
     /**
-     * @brief radiante
-     */
-    private float rad;
-    
-    /**
      * @brief velocità sull'asse x
      */
     private float xspeed;
@@ -105,6 +100,12 @@ public class Sabbia {
         colore = new Color(224, 161, 117);
         
         dc = dc1;
+        
+        xpos = 0;
+        ypos = 0;
+        
+        xspeed = 1;   // Speed of the shape
+        yspeed = 1;   // Speed of the shape
     }
 
     /**
@@ -128,6 +129,10 @@ public class Sabbia {
         colore = new Color(224, 161, 117);
         
         dc = dc1;
+        xspeed = 1;   // Speed of the shape
+        yspeed = 1;   // Speed of the shape
+        xpos = 0;
+        ypos = 0;
     }
 
     /**
@@ -280,7 +285,7 @@ public class Sabbia {
      */
     public void moveX() {
             // Aggiorna la posizione della pallina
-            dc.setPosSabbiaY(xpos + (float) (xspeed  * dc.getInclinazioneX()));
+            xpos = xpos + (float) (xspeed  * dc.getInclinazioneX());
     }
     
     /**
@@ -288,7 +293,7 @@ public class Sabbia {
      */
     public void moveY() {
             // Aggiorna la posizione della pallina
-            dc.setPosSabbiaY(ypos + (float) (yspeed * dc.getInclinazioneY()));
+            ypos = ypos + (float) (yspeed * dc.getInclinazioneY());
     }
     
     /**
@@ -297,9 +302,9 @@ public class Sabbia {
      * @return 0, se la pallina non ha raggiunto il bordo
      */
     public int ifBordoOrizz(){
-        if(xpos > widthScreen - rad)
+        if(xpos > widthScreen - 115)
             return 1;
-        else if(xpos < rad)
+        else if(xpos < 0)
             return -1;
         return 0;
     }
@@ -310,9 +315,9 @@ public class Sabbia {
      * @return 0, se la pallina non ha raggiunto il bordo
      */
     public int ifBordoVert(){
-        if(ypos > heightScreen - rad)
+        if(ypos > heightScreen - 115)
             return 1;
-        else if(ypos < rad)
+        else if(ypos < 0)
             return -1;
         return 0;
     }
@@ -348,5 +353,13 @@ public class Sabbia {
     public void setScreen(int width, int height) {
         widthScreen = width;
         heightScreen = height;
+    }
+    
+    public float getX(){
+        return xpos;
+    }
+    
+    public float getY(){
+        return ypos;
     }
 }

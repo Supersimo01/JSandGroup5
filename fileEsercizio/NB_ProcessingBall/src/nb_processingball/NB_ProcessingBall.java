@@ -21,6 +21,10 @@ public class NB_ProcessingBall extends PApplet {
     static ThSabbia threadSabbia;   
     /** numero di balls e di thread */
     static int numBalls;        
+    /** sabbia **/
+    static Sabbia sabbia;
+    /** matrice di scatole **/
+    static Scatola[][] matScatole;
 
     /**
      * @param args the command line arguments
@@ -35,6 +39,15 @@ public class NB_ProcessingBall extends PApplet {
             threadPalline[i] = new ThBall(dc, i);
         }
 
+        sabbia = dc.getSabbia();
+        matScatole = new Scatola[dc.getRigheScatole()][dc.getColonneScatole()];
+        for(int i = 0; i < dc.getColonneScatole(); i++){
+            for(int j = 0; j < dc.getRigheScatole(); j++){
+                //imposta le posizioni iniziali
+                matScatole[i][j] = new Scatola(i * 115, j * 115);
+            }
+        }
+        
         PApplet.main(new String[]{"nb_processingball.NB_ProcessingBall"});
 
         SwingGui swingGui = new SwingGui(dc);
@@ -74,7 +87,7 @@ public class NB_ProcessingBall extends PApplet {
          /** fa apparire tutte le palline */
         for (int i = 0; i < dc.numBalls(); i++) {
          /** aggiunge la palline da disegnare */
-            display(dc.getBalls(i));
+            display(dc.getBalls(i), sabbia);
         }
     }
 
@@ -83,21 +96,24 @@ public class NB_ProcessingBall extends PApplet {
      * @brief disegna le palline
      * @param ball 
      */
-    void display(Ball ball) { //terminare variabili condivise
+    void display(Ball ball, Sabbia s) { //terminare variabili condivise
          // imposta il colore dei rettangoli
         fill(color(200, 200, 200));
          //disegna il primo rettangolo
-        rect(dc.getPosPrimaColonna(), dc.getPosPrimaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
-         // disegna il secondo rettangolo
-        rect(dc.getPosSecondaColonna(), dc.getPosPrimaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
-         // disegna il terzo rettangolo
-        rect(dc.getPosPrimaColonna(), dc.getPosSecondaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
-         // disegna il quarto rettangolo
-        rect(dc.getPosSecondaColonna(), dc.getPosSecondaRiga(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
+        for(int i = 0; i < dc.getColonneScatole(); i++){
+            for(int j = 0; j < dc.getRigheScatole(); j++){
+                System.out.println("X:" + matScatole[i][j].getPosX() + " Y:" + matScatole[i][j].getPosY());
+                rect(matScatole[i][j].getPosX(), matScatole[i][j].getPosY(), 0, 0, 6);
+            }
+        }
          // imposta il colore della pallina
         //disegna la sabbia
-        fill(color(224, 161, 117));
-        rect(dc.getPosSabbiaX(), dc.getPosSabbiaY(), dc.getRadRect(), dc.getRadRect(), dc.getSmussatura());
+        fill(color(194,178,128));
+        //disegna la sabbia
+        pushStyle();
+        noStroke();
+        rect(s.getX(), s.getY(), 0, 0, 6);
+        popStyle();
         // disegna le palline
         fill(color(dc.getRed(), dc.getGreen(), dc.getBlue()));
         ellipse(ball.getXpos(), ball.getYpos(), ball.getRad(), ball.getRad());

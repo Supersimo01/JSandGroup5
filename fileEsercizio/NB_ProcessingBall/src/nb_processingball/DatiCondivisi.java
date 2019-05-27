@@ -22,38 +22,6 @@ public class DatiCondivisi {
     private float inclinazioneX;
     private float inclinazioneY;
 
-    /**
-     * @brief posizione y dei rettangoli nella prima colonna
-     */
-    private float posPrimaRiga;
-    /**
-     * @brief posizione y dei rettangoli nella seconda colonna
-     */
-    private float posSecondaRiga;
-    /**
-     * @brief posizione y dei rettangoli nella terza colonna
-     */
-    private float posTerzaRiga;
-    /**
-     * @brief posizione x dei rettangoli nella prima riga
-     */
-    private float posPrimaColonna;
-    /**
-     * @brief posizione x dei rettangoli nella seconda riga
-     */
-    private float posSecondaColonna;
-    /**
-     * @brief posizione x dei rettangoli nella terzza riga
-     */
-    private float posTerzaColonna;
-    /**
-     * @brief radiante dei rettangoli
-     */
-    private float radRect;
-    /**
-     * @brief smussatura dei rettangoli
-     */
-    private float smussatura;
     
     /**
      * @brief colore della sabbia
@@ -61,18 +29,18 @@ public class DatiCondivisi {
     private Color coloreSabbia;
     
     /**
+     * @brief righe delle matrice delle scatole
+     */
+    private int righeScatole;
+    
+    /**
+     * @brief colonne delle matrice delle scatole
+     */
+    private int colonneScatole;
+    /**
      * @brief sabbia
      */
     private Sabbia sabbia;
-    /**
-     * @brief posizione asse x della sabbia
-     */
-    private float posSabbiaX;
-    
-    /**
-     * @brief posizione asse x della sabbia
-     */
-    private float posSabbiaY;
     /**
      * @brief costruttore con parametri
      * @param numBalls
@@ -97,6 +65,9 @@ public class DatiCondivisi {
         inclinazioneY = 0;
         sabbia = new Sabbia(this);
         coloreSabbia = sabbia.getColore();
+        
+        righeScatole = 2;
+        colonneScatole = 2;
     }
 
     /**
@@ -117,17 +88,10 @@ public class DatiCondivisi {
         inclinazioneY = 0;
         
         //set parametri di default dei rettangoli
-        posPrimaRiga = 0;
-        posSecondaRiga = 115;
-        posSabbiaX = 0;
-        posSabbiaY = 0;
-        posTerzaRiga = 230;
-        posPrimaColonna = 0;
-        posSecondaColonna = 115;
         sabbia = new Sabbia(this);
-        posTerzaColonna = 230;
-        radRect = 115;
-        smussatura = 6;
+        
+        righeScatole = 2;
+        colonneScatole = 2;
     }
 
     /**
@@ -277,80 +241,12 @@ public class DatiCondivisi {
     public float getInclinazioneY(){
         return inclinazioneY;
     }
-    
-    /**
-     * @return valore posizione della prima riga
-     */
-    public float getPosPrimaRiga() {
-        return posPrimaRiga;
+
+    public int getRigheScatole() {
+        return righeScatole;
     }
 
-    
-    /**
-     * @return valore posizione della seconda riga
-     */
-    public float getPosSecondaRiga() {
-        return posSecondaRiga;
+    public int getColonneScatole() {
+        return colonneScatole;
     }
-
-    
-    /**
-     * @return valore posizione prima colonna
-     */
-    public float getPosPrimaColonna() {
-        return posPrimaColonna;
-    }
-    
-    /**
-     * @return valore posizione del radiante dei rettangoli
-     */
-    public float getRadRect() {
-        return radRect;
-    }
-
-    /**
-     * @return valore smussatorua dei rettangoli
-     */
-    public float getSmussatura() {
-        return smussatura;
-    }
-
-    /**
-     * @return posizione terza riga
-     */
-    public float getPosTerzaRiga() {
-        return posTerzaRiga;
-    }
-    
-    /**
-     * @return posizione seconda colonna
-     */
-    public float getPosSecondaColonna() {
-        return posSecondaColonna;
-    }
-
-    /**
-     * @return posizione terza colonna
-     */
-    public float getPosTerzaColonna() {
-        return posTerzaColonna;
-    }
-    
-    
-    public float getPosSabbiaX(){
-        return posSabbiaX;
-    }
-    
-    public float getPosSabbiaY(){
-        return posSabbiaY;
-    }
-    
-    public void setPosSabbiaX(float posSabbiaX) {
-        this.posSabbiaX = posSabbiaX;
-    }
-
-    public void setPosSabbiaY(float posSabbiaY) {
-        this.posSabbiaY = posSabbiaY;
-    }
-    
 }
