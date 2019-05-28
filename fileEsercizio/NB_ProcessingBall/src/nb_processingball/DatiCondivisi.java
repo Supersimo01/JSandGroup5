@@ -66,8 +66,8 @@ public class DatiCondivisi {
         sabbia = new Sabbia(this);
         coloreSabbia = sabbia.getColore();
         
-        righeScatole = 2;
-        colonneScatole = 2;
+        righeScatole = 5;
+        colonneScatole = 5;
     }
 
     /**
@@ -90,8 +90,8 @@ public class DatiCondivisi {
         //set parametri di default dei rettangoli
         sabbia = new Sabbia(this);
         
-        righeScatole = 2;
-        colonneScatole = 2;
+        righeScatole = 5;//cambiare qua
+        colonneScatole = 5;
     }
 
     /**
